@@ -21,41 +21,48 @@ dice_p.style.display = 'none';
 
 document.getElementById("score-0").textContent = '0';
 document.getElementById("score-1").textContent = '0';
-var c_0 = document.getElementById("current-0");
+c_0 = document.getElementById("current-0");
 c_0.textContent = '0';
-var c_1 = document.getElementById("current-1");
+c_1 = document.getElementById("current-1");
 c_1.textContent = '0';
 
-function rolling(){
-	document.querySelector(".btn-roll").addEventListener('click', function(){
-		var dice_n = Math.floor(Math.random()*6)+1;
-		dice_p.src = 'dice-' + dice_n +'.png';
-		dice_p.style.display = 'block';
+function judge(){
 
-		if (dice_n == 1){
-			total = 0;
-			c_0.textContent = 0;
-			activePlayer += 1;
-		}
-		else{
-			total += dice_n;
-			c_0.textContent = total;
-		}
-
-		function turnover(){
-		};		
-	});
 }
-
 
 
 // roll the dice
-if (activePlayer == 1){
-	rolling();
-}
-else if (activePlayer == 2){
-	rolling();
-}
+
+document.querySelector(".btn-roll").addEventListener('click', function(){
+	var dice_n = Math.floor(Math.random()*6)+1;
+	dice_p.src = 'dice-' + dice_n +'.png';
+	dice_p.style.display = 'block';
+
+	if (dice_n == 1){
+		total = 0
+		if (activePlayer == 1) {
+			c_0.textContent = total
+		}
+		else {
+			c_1.textContent = total
+		}
+		activePlayer == 1 ? activePlayer = 2 : activePlayer = 1;
+	}
+	else {
+		total += dice_n;
+		if (activePlayer == 1) {
+			c_0.textContent = total
+		}
+		else {
+			c_1.textContent = total
+		}
+	}
+
+	function turnover(){
+	};		
+
+});
+
 
 
 
