@@ -45,12 +45,14 @@ document.querySelector(".btn-hold").addEventListener('click',
 			document.getElementById("score-0").textContent = score_0;
 			activetoggle();
 			total = 0;
+			winner();
 		}
 		else {
 			score_1 += total;
 			document.getElementById("score-1").textContent = score_1;
 			activetoggle();
 			total = 0;
+			winner();
 		}
 		activePlayer == 1 ? activePlayer = 2 : activePlayer = 1;
 	}
@@ -85,5 +87,25 @@ document.querySelector(".btn-roll").addEventListener('click', function(){
 
 });
 
+// now, make end-points for deciding winner (100pts for winning)
+function winner(){
+	if (score_0 >= 100) {
+		document.getElementById("name-0").textContent = "Winner!";
+		document.querySelector('.player-0-panel').classList.add('active');
+		document.querySelector('.player-1-panel').classList.remove('active');
+		document.querySelector('.btn-roll').style.display = 'none';
+		document.querySelector('.btn-hold').style.display = 'none';
+		dice_p.style.display = 'none';
+	}
+	else if (score_1 >= 100) {
+		document.getElementById("name-1").textContent = "Winner!";
+		document.querySelector('.player-1-panel').classList.add('active');
+		document.querySelector('.player-0-panel').classList.remove('active');
+		document.querySelector('.btn-roll').style.display = 'none';
+		document.querySelector('.btn-hold').style.display = 'none';
+		dice_p.style.display = 'none';
+	}
+}
 
+// activate 'new game' button to reset the game
 
