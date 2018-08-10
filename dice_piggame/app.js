@@ -107,18 +107,22 @@ function winner(){
 		document.querySelector('.btn-hold').style.display = 'none';
 		dice_p.style.display = 'none';
 	}
-}
+};
 
 // activate 'new game' button to reset the game
 function restart() {
 	document.querySelector('.btn-new').addEventListener('click',
 		function(){
+			score_0 = 0;
+			score_1 = 0;
+			document.getElementById("score-0").textContent = score_0;
+			document.getElementById("score-1").textContent = score_1;
 			document.getElementById("name-0").textContent = "Player 1";
 			document.getElementById("name-1").textContent = "Player 2";
 			document.querySelector('.btn-roll').style.display = 'block';
 			document.querySelector('.btn-hold').style.display = 'block';
-			document.querySelector('.player-1-panel').classList.add('active'); 	// activetoggle 함수 쓰면 될듯
-			document.querySelector('.player-0-panel').classList.remove('active');
+			document.querySelector('.player-1-panel').classList.remove('active'); 	// activetoggle 함수 쓰면 될듯
+			document.querySelector('.player-0-panel').classList.add('active');
 			dice_p.style.display = 'block';
 		}
 	)
