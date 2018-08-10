@@ -23,6 +23,8 @@ c_0.textContent = '0';
 c_1 = document.getElementById("current-1");
 c_1.textContent = '0';
 
+restart();
+
 
 // condition of active player at this moment
 function activetoggle(){
@@ -108,4 +110,17 @@ function winner(){
 }
 
 // activate 'new game' button to reset the game
+function restart() {
+	document.querySelector('.btn-new').addEventListener('click',
+		function(){
+			document.getElementById("name-0").textContent = "Player 1";
+			document.getElementById("name-1").textContent = "Player 2";
+			document.querySelector('.btn-roll').style.display = 'block';
+			document.querySelector('.btn-hold').style.display = 'block';
+			document.querySelector('.player-1-panel').classList.add('active'); 	// activetoggle 함수 쓰면 될듯
+			document.querySelector('.player-0-panel').classList.remove('active');
+			dice_p.style.display = 'block';
+		}
+	)
+};
 
